@@ -1,0 +1,146 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html>
+<head>
+    <title>Kiran, Will You Be My Valentine?</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 34px;
+            color: #ffffff;
+            position: relative;
+            z-index: 2;
+        }
+
+        .name {
+            font-size: 42px;
+            font-weight: bold;
+            color: #ff3366;
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .big-heart {
+            font-size: 100px;
+            margin-top: 20px;
+            animation: pulse 1.5s infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tease {
+            font-size: 18px;
+            color: #ffffff;
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin: 20px;
+            transition: 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+        #yesBtn {
+            background-color: #ff3366;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #444;
+            color: white;
+            position: absolute;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 20px;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="name">Kiran ❤️</div>
+
+    <div class="big-heart">💖</div>
+
+    <h1>Will You Be My Valentine?</h1>
+    <div class="tease">Go on… try pressing No 😌</div>
+
+    <button id="yesBtn" onclick="yesClicked()">Yes 💘</button>
+    <button id="noBtn" onmouseover="moveButton()">No 🙈</button>
+
+    <script>
+        function yesClicked() {
+            document.body.innerHTML = `
+                <h1 style="margin-top:200px;color:white;font-size:40px;">
+                    Kiran ❤️ You just made me the happiest man alive 😍
+                </h1>
+            `;
+
+            for (let i = 0; i < 50; i++) {
+                createHeart();
+            }
+        }
+
+        function moveButton() {
+            var button = document.getElementById("noBtn");
+            var x = Math.random() * (window.innerWidth - 100);
+            var y = Math.random() * (window.innerHeight - 50);
+            button.style.left = x + "px";
+            button.style.top = y + "px";
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.fontSize = Math.random() * 20 + 15 + "px";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+
+</body>
+</html>
